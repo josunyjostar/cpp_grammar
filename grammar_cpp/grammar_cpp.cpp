@@ -2,10 +2,14 @@
 //
 
 #include <iostream>
+#include "./SmartPointer/AutoPtr.h"
+#include "./SmartPointer/Resource.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    AutoPtr<Resource> res1(new Resource);
+
+    std::cout << "프로그램 종료!\n";
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
