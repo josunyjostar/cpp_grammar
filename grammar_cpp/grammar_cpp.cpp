@@ -7,16 +7,21 @@
 
 using namespace std;
 
+AutoPtr<Resource> generateResource() {
+	AutoPtr<Resource> res(new Resource(10000000));
+	return res;
+}
+
 int main()
 {
-    AutoPtr<Resource> res1(new Resource);
+	// streambuf* orig_buf = cout.rdbuf();
+	//AutoPtr<Resource> res1(new Resource);
+	{
+		AutoPtr<Resource> res;
+		res = generateResource();
+	}
 
-    int x = 5;
-    int& lr4 = x;
-
-    lr4 = 10; 
-
-    cout << "프로그램 종료!" << lr4 << endl;
+	cout << "프로그램 종료!" << " " << endl;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

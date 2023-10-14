@@ -1,12 +1,15 @@
 #pragma once
 
 #include <iostream>
+#include "AutoPtr.h"
+
 using namespace std;
 class Resource {
 
 public:
 	Resource() {
 		cout << "Resource 기본 생성자" << endl;
+		
 	}
 
 	Resource(unsigned length) {

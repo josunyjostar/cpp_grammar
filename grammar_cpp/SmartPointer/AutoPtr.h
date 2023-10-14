@@ -21,7 +21,37 @@ public:
 
 	AutoPtr& operator=(const AutoPtr& a) {
 		cout << "Auto ptr 복사 대입 연산자" << endl;
-		if(m)
+		if (&a == this) return *this;
+
+		if (m_ptr != nullptr) {
+			delete m_ptr;
+		}
+
+		m_ptr = new T;
+		*m_ptr = *a.m_ptr;
+
+		return *this;
+	}
+
+	AutoPtr(AutoPtr&& a) :m_ptr(a.m_ptr) {
+		cout << "Auto ptr 이동 생성자" << endl;
+
+		//*swallow copy
+		a.m_ptr = nullptr;
+	}
+
+	AutoPtr& operator=(AutoPtr&& a) {
+		cout << "Auto ptr 이동 대입 연산자" << endl;
+		if (&a == this) return *this;
+
+		if (m_ptr != nullptr) {
+			delete m_ptr;
+		}
+
+		m_ptr = a.m_ptr;
+		a.m_ptr = nullptr;
+
+		return *this;
 	}
 
 	~AutoPtr() {
